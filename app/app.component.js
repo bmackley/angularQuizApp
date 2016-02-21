@@ -1,4 +1,4 @@
-System.register(['angular2/core', './subject.service', './subjects.component', './dashboard.component', './subject-detail.component', 'angular2/router'], function(exports_1) {
+System.register(['angular2/core', './subject.service', './subjects.component', './concepts.component', './concept.service', './dashboard.component', './subject-detail.component', 'angular2/router'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/core', './subject.service', './subjects.component', '
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, subject_service_1, subjects_component_1, dashboard_component_1, subject_detail_component_1, router_1;
+    var core_1, subject_service_1, subjects_component_1, concepts_component_1, concept_service_1, dashboard_component_1, subject_detail_component_1, router_1;
     var AppComponent;
     return {
         setters:[
@@ -20,6 +20,12 @@ System.register(['angular2/core', './subject.service', './subjects.component', '
             },
             function (subjects_component_1_1) {
                 subjects_component_1 = subjects_component_1_1;
+            },
+            function (concepts_component_1_1) {
+                concepts_component_1 = concepts_component_1_1;
+            },
+            function (concept_service_1_1) {
+                concept_service_1 = concept_service_1_1;
             },
             function (dashboard_component_1_1) {
                 dashboard_component_1 = dashboard_component_1_1;
@@ -33,16 +39,17 @@ System.register(['angular2/core', './subject.service', './subjects.component', '
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
-                    this.title = 'List of Subjects';
+                    this.title = 'Find Learning Materials';
                 }
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n    <h1>{{title}}</h1>\n    <nav>\n      <a [routerLink]=\"['Dashboard']\">Dashboard</a>\n      <a [routerLink]=\"['Subjects']\">Subjects</a>\n    </nav>\n    <router-outlet></router-outlet>\n  ",
+                        template: "\n    <h1>{{title}}</h1>\n    <nav>\n      <a [routerLink]=\"['Dashboard']\">Dashboard</a>\n      <a [routerLink]=\"['Subjects']\">Subjects</a>\n      <a [routerLink]=\"['Concepts']\">Concepts</a>\n    </nav>\n    <router-outlet></router-outlet>\n  ",
                         directives: [router_1.ROUTER_DIRECTIVES],
                         providers: [
                             router_1.ROUTER_PROVIDERS,
-                            subject_service_1.SubjectService
+                            subject_service_1.SubjectService,
+                            concept_service_1.ConceptService,
                         ]
                     }),
                     router_1.RouteConfig([
@@ -61,6 +68,11 @@ System.register(['angular2/core', './subject.service', './subjects.component', '
                             path: '/subjects',
                             name: 'Subjects',
                             component: subjects_component_1.SubjectsComponent
+                        },
+                        {
+                            path: '/concepts',
+                            name: 'Concepts',
+                            component: concepts_component_1.ConceptsComponent
                         }
                     ]), 
                     __metadata('design:paramtypes', [])

@@ -1,29 +1,25 @@
 import {Component, OnInit} from 'angular2/core';
-import {Subject} from './subject';
-import {SubjectDetailComponent} from './subject-detail.component';
-import {SubjectService} from './subject.service';
 import {Concept} from './concept';
 import {ConceptDetailComponent} from './concept-detail.component';
-import {ConceptService} from './concept.service'
-
+import {ConceptService} from './concept.service';
 import {Router } from 'angular2/router';
 @Component({
-  selector: 'my-subjects',
+  selector: 'my-concepts',
   template:`
     <h1>{{title}}</h1>
-    <h2>My Subjects</h2>
+    <h2>My Concepts</h2>
     <ul class="subjects">
-      <li *ngFor="#subject of subjects"
-        [class.selected]="subject === selectedSubject"
-        (click)="onSelect(subject)">
-        <span class="badge">{{subject.id}}</span> {{subject.name}}
+      <li *ngFor="#concept of concepts"
+        [class.selected]="concept === selectedConcept"
+        (click)="onSelect(concept)">
+        <span class="badge">{{concept.id}}</span> {{concept.name}}
       </li>
     </ul>
-    <div *ngIf="selectedSubject">
+    <div *ngIf="selectedConcept">
       <h2>
-        View concepts for {{selectedSubject.name | uppercase}}
+        {{selectedConcept.name | uppercase}} will have questions next week!
       </h2>
-      <button (click)="gotoDetail()">View Concepts</button>
+      <button (click)="gotoDetail()">View Questions</button>
     </div>
   `,
   styles:[`
@@ -74,22 +70,21 @@ import {Router } from 'angular2/router';
       border-radius: 4px 0px 0px 4px;
     }
   `],
-  directives: [SubjectDetailComponent]
+  directives: [ConceptDetailComponent]
 })
-export class SubjectsComponent implements OnInit {
+export class ConceptsComponent implements OnInit {
   // public title = 'Tour of Subjectes';
-  public subjects: Subject[];
-  public selectedSubject: Subject;
   public concepts: Concept[];
-  constructor(private _router: Router, private _subjectService: SubjectService) { }
-  getSubjects() {
-    this._subjectService.getSubjects().then(subjects => this.subjects = subjects);
+  public selectedConcept: Concept;
+  constructor(private _router: Router, private _conceptService: ConceptService) { }
+  getConcepts() {
+    this._conceptService.getConcepts().then(concepts => this.concepts = concepts);
   }
   ngOnInit() {
-    this.getSubjects();
+    this.getConcepts();
   }
-  onSelect(subject: Subject) { this.selectedSubject = subject; }
+  onSelect(concept: Concept) { this.selectedConcept = concept; }
   gotoDetail() {
-    this._router.navigate(['Concepts', { id: this.selectedSubject.id }]);
+    this._router.navigate(['ConceptDetail', { id: this.selectedConcept.id }]);
   }
 }

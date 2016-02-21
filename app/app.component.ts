@@ -1,6 +1,8 @@
 import { Component }       from 'angular2/core';
 import { SubjectService }     from './subject.service';
 import { SubjectsComponent } from './subjects.component';
+import { ConceptsComponent } from './concepts.component';
+import { ConceptService } from './concept.service'
 import { DashboardComponent} from './dashboard.component';
 import { SubjectDetailComponent} from './subject-detail.component'
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
@@ -11,13 +13,15 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
     <nav>
       <a [routerLink]="['Dashboard']">Dashboard</a>
       <a [routerLink]="['Subjects']">Subjects</a>
+      <a [routerLink]="['Concepts']">Concepts</a>
     </nav>
     <router-outlet></router-outlet>
   `,
   directives: [ROUTER_DIRECTIVES],
   providers: [
     ROUTER_PROVIDERS,
-    SubjectService
+    SubjectService,
+    ConceptService,
   ]
 })
 @RouteConfig([
@@ -36,8 +40,13 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
     path: '/subjects',
     name: 'Subjects',
     component: SubjectsComponent
+  },
+  {
+    path: '/concepts',
+    name: 'Concepts',
+    component: ConceptsComponent
   }
 ])
 export class AppComponent {
-  title = 'List of Subjects';
+  title = 'Find Learning Materials';
 }

@@ -5,15 +5,14 @@ import {Subject } from './subject'
 import { SubjectService } from './subject.service';
 @Component({
   selector: 'my-dashboard',
-  template: `<h3>Top Subjects</h3>
-            <div class="grid grid-pad">
-                <div *ngFor="#subject of subjects" (click)="gotoDetail(subject)" class="col-1-4" >
-                    <div class="module subject">
-                        <h4>{{subject.name}}</h4>
-                    </div>
-                </div>
-            </div>`
-
+  template: `<h3>Top Heroes</h3>
+  <div class="grid grid-pad">
+      <div *ngFor="#subject of subjects" (click)="gotoDetail(subject)" class="col-1-4" >
+          <div class="module hero">
+              <h4>{{subject.name}}</h4>
+          </div>
+      </div>
+  </div>`,
 })
 
 export class DashboardComponent implements OnInit {
