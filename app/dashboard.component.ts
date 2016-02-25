@@ -5,7 +5,7 @@ import {Subject } from './subject/subject'
 import { SubjectService } from './subject/subject.service';
 @Component({
   selector: 'my-dashboard',
-  template: `<h3>Top Heroes</h3>
+  template: `<h3>Top Subjects</h3>
   <div class="grid grid-pad">
       <div *ngFor="#subject of subjects" (click)="gotoDetail(subject)" class="col-1-4" >
           <div class="module hero">
