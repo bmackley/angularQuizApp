@@ -1,0 +1,16 @@
+<h1>{{title}}</h1>
+<h2>My Concepts</h2>
+<ul class="subjects">
+  <li *ngFor="#concept of concepts"
+    [class.selected]="concept === selectedConcept"
+    (click)="onSelect(concept)">
+    <span class="badge">{{concept.id}}</span> {{concept.name}}
+  </li>
+</ul>
+<div *ngIf="selectedConcept">
+  <h2>
+    {{selectedConcept.name | uppercase}} will have questions next week!
+  </h2>
+  <button (click)="gotoDetail()">View Questions</button>
+</div>
+<button (click)="gotoCreateConcepts()">New Concept</button>

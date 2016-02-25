@@ -1,10 +1,10 @@
 import { Component }       from 'angular2/core';
-import { SubjectService }     from './subject.service';
-import { SubjectsComponent } from './subjects.component';
-import { ConceptsComponent } from './concepts.component';
-import { ConceptService } from './concept.service'
+import { SubjectService }     from './subject/subject.service';
+import { SubjectsComponent } from './subject/subjects.component';
+import { ConceptsComponent } from './concept/concepts.component';
+import { ConceptService } from './concept/concept.service'
 import { DashboardComponent} from './dashboard.component';
-import { SubjectDetailComponent} from './subject-detail.component'
+import { SubjectDetailComponent} from './subject/subject-detail.component'
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
 @Component({
   selector: 'my-app',
@@ -13,7 +13,6 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
     <nav>
       <a [routerLink]="['Dashboard']">Dashboard</a>
       <a [routerLink]="['Subjects']">Subjects</a>
-      <a [routerLink]="['Concepts']">Concepts</a>
     </nav>
     <router-outlet></router-outlet>
   `,

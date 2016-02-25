@@ -1,8 +1,8 @@
 import { Component, OnInit } from 'angular2/core';
 import {Router } from 'angular2/router';
 
-import {Subject } from './subject'
-import { SubjectService } from './subject.service';
+import {Subject } from './subject/subject'
+import { SubjectService } from './subject/subject.service';
 @Component({
   selector: 'my-dashboard',
   template: `<h3>Top Heroes</h3>

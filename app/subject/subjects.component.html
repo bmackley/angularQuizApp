@@ -1,0 +1,15 @@
+<h1>{{title}}</h1>
+<h2>My Subjects</h2>
+<ul class="subjects">
+  <li *ngFor="#subject of subjects"
+    [class.selected]="subject === selectedSubject"
+    (click)="onSelect(subject)">
+    <span class="badge">{{subject.id}}</span> {{subject.name}}
+  </li>
+</ul>
+<div *ngIf="selectedSubject">
+  <h2>
+    View concepts for {{selectedSubject.name | uppercase}}
+  </h2>
+  <button (click)="gotoDetail()">View Concepts</button>
+</div>

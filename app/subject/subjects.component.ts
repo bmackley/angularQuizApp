@@ -2,30 +2,14 @@ import {Component, OnInit} from 'angular2/core';
 import {Subject} from './subject';
 import {SubjectDetailComponent} from './subject-detail.component';
 import {SubjectService} from './subject.service';
-import {Concept} from './concept';
+import {Concept} from '.concept/concept';
 import {ConceptDetailComponent} from './concept-detail.component';
 import {ConceptService} from './concept.service'
 
 import {Router } from 'angular2/router';
 @Component({
   selector: 'my-subjects',
-  template:`
-    <h1>{{title}}</h1>
-    <h2>My Subjects</h2>
-    <ul class="subjects">
-      <li *ngFor="#subject of subjects"
-        [class.selected]="subject === selectedSubject"
-        (click)="onSelect(subject)">
-        <span class="badge">{{subject.id}}</span> {{subject.name}}
-      </li>
-    </ul>
-    <div *ngIf="selectedSubject">
-      <h2>
-        View concepts for {{selectedSubject.name | uppercase}}
-      </h2>
-      <button (click)="gotoDetail()">View Concepts</button>
-    </div>
-  `,
+  templateUrl: 'app/subject/subjects.component.html',
   styles:[`
     .selected {
       background-color: #CFD8DC !important;

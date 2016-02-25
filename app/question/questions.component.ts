@@ -1,5 +1,5 @@
 import {Component, OnInit} from 'angular2/core';
-import {Concept} from './concept';
+import {Concept} from './concept/concept';
 import {ConceptDetailComponent} from './concept-detail.component';
 import {ConceptService} from './concept.service';
 import {Router } from 'angular2/router';
