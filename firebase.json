@@ -1,0 +1,9 @@
+{
+  "firebase": "e3education",
+  "public": "app",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

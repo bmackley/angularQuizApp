@@ -1,4 +1,4 @@
-System.register(['angular2/core', './subject/subject.service', './subject/subjects.component', './concept/concepts.component', './concept/concept.service', './dashboard.component', './subject/subject-detail.component', 'angular2/router'], function(exports_1) {
+System.register(['angular2/core', './subject/subject.service', './subject/subjects.component', './concept/concepts.component', './concept/concept.service', './dashboard.component', './subject/subject-detail.component', './shared/authenticate/authenticate.component', './shared/authenticate/create_account.component', 'angular2/router'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/core', './subject/subject.service', './subject/subjec
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, subject_service_1, subjects_component_1, concepts_component_1, concept_service_1, dashboard_component_1, subject_detail_component_1, router_1;
+    var core_1, subject_service_1, subjects_component_1, concepts_component_1, concept_service_1, dashboard_component_1, subject_detail_component_1, authenticate_component_1, create_account_component_1, router_1;
     var AppComponent;
     return {
         setters:[
@@ -33,6 +33,12 @@ System.register(['angular2/core', './subject/subject.service', './subject/subjec
             function (subject_detail_component_1_1) {
                 subject_detail_component_1 = subject_detail_component_1_1;
             },
+            function (authenticate_component_1_1) {
+                authenticate_component_1 = authenticate_component_1_1;
+            },
+            function (create_account_component_1_1) {
+                create_account_component_1 = create_account_component_1_1;
+            },
             function (router_1_1) {
                 router_1 = router_1_1;
             }],
@@ -44,7 +50,7 @@ System.register(['angular2/core', './subject/subject.service', './subject/subjec
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n    <h1>{{title}}</h1>\n    <nav>\n      <a [routerLink]=\"['Dashboard']\">Dashboard</a>\n      <a [routerLink]=\"['Subjects']\">Subjects</a>\n    </nav>\n    <router-outlet></router-outlet>\n  ",
+                        template: "\n    <h1>{{title}}</h1>\n    <nav>\n      <a [routerLink]=\"['Dashboard']\">Dashboard</a>\n      <a [routerLink]=\"['Subjects']\">Subjects</a>\n      <a [routerLink]=\"['Login']\">Login</a>\n      <a [routerLink]=\"['SignUp']\">Sign Up</a>\n    </nav>\n    <router-outlet></router-outlet>\n  ",
                         directives: [router_1.ROUTER_DIRECTIVES],
                         providers: [
                             router_1.ROUTER_PROVIDERS,
@@ -73,6 +79,16 @@ System.register(['angular2/core', './subject/subject.service', './subject/subjec
                             path: '/concepts',
                             name: 'Concepts',
                             component: concepts_component_1.ConceptsComponent
+                        },
+                        {
+                            path: '/login',
+                            name: 'Login',
+                            component: authenticate_component_1.LoginComponent
+                        },
+                        {
+                            path: '/sign_up',
+                            name: 'SignUp',
+                            component: create_account_component_1.SignUpComponent
                         }
                     ]), 
                     __metadata('design:paramtypes', [])
