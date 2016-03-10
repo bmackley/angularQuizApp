@@ -39,30 +39,26 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', './fireb
                     //return JSON.stringify(this.loginForm.value, null, 2)
                 };
                 LoginComponent.prototype.doLogin = function () {
-                    function authHandler(error, authData) {
+                    console.log(this.email);
+                    console.log(this.password);
+                    debugger;
+                    var fireBaseInfo = new Firebase("https://e3education.firebaseio.com/");
+                    fireBaseInfo.authWithPassword({
+                        email: this.email,
+                        password: this.password
+                    }, function (error, authData) {
                         if (error) {
                             console.log("Login Failed!", error);
                         }
                         else {
                             console.log("Authenticated successfully with payload:", authData);
                         }
-                    }
-                    var fireBaseInfo = new Firebase("https://e3education.firebaseio.com/");
-                    var loginRef = fireBaseInfo.child("user");
-                    loginRef.authWithPassword({
-                        email: this.email,
-                        password: this.password
-                    }, authHandler);
-                    alert(this.email);
-                };
-                LoginComponent.prototype.onSubmit = function (value) {
-                    alert(value);
-                    console.log('you submitted value:', value);
+                    });
                 };
                 LoginComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n  {{diagnostic}}\n  <div class=\"row\">\n  <div class=\"col s6 offset-s3 m6 offset-m3 l6 offset-l3\">\n    <div class=\"card blue-grey darken-1\">\n      <div class=\"card-content white-text\">\n        <span class=\"card-title\">Login</span>\n        <form [ngFormModel]=\"loginForm\" (ngSubmit)=\"doLogin()\">\n          <input [(ngModel)]=\"email\" type=\"email\" placeholder=\"Your email\">\n          <input ngControl=\"password\" type=\"password\" placeholder=\"Your password\">\n          <button type=\"submit\">Log in</button>\n        </form>\n        TODO: Remove this: {{email}}\n    </div>\n  </div>\n</div>\n\n<div class=\"row\">\n  <div class=\"col s6 offset-s3 m6 offset-m3 l6 offset-l3\">\n    <div class=\"card blue-grey darken-1\">\n      <div class=\"card-content white-text\">\n        <h2>Login</h2>\n        <form #f=\"ngForm\"\n              (ngSubmit)=\"onSubmit(f)\"\n              class=\"ui form\">\n\n          <div class=\"field\">\n            <input ngControl=\"email\" type=\"email\" placeholder=\"Your email\">\n            <input ngControl=\"password\" type=\"password\" placeholder=\"Your password\">\n            <button type=\"submit\">Log in</button>\n          </div>\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n\n  ",
+                        template: "\n  {{diagnostic}}\n  <div class=\"row\">\n  <div class=\"col s6 offset-s3 m6 offset-m3 l6 offset-l3\">\n    <div class=\"card blue-grey darken-1\">\n      <div class=\"card-content white-text\">\n        <span class=\"card-title\">Login</span>\n        <form [ngFormModel]=\"loginForm\" (ngSubmit)=\"doLogin()\">\n          <input [(ngModel)]=\"email\" type=\"email\" placeholder=\"Your email\">\n          <input [(ngModel)]=\"password\" type=\"password\" placeholder=\"Your password\">\n          <button type=\"submit\">Log in</button>\n        </form>\n        TODO: Remove this: {{email}}\n    </div>\n  </div>\n</div>\n<!--\n<div class=\"row\">\n  <div class=\"col s6 offset-s3 m6 offset-m3 l6 offset-l3\">\n    <div class=\"card blue-grey darken-1\">\n      <div class=\"card-content white-text\">\n        <h2>Login</h2>\n        <form #f=\"ngForm\"\n              (ngSubmit)=\"onSubmit(f)\"\n              class=\"ui form\">\n\n          <div class=\"field\">\n            <input ngControl=\"email\" type=\"email\" placeholder=\"Your email\">\n            <input ngControl=\"password\" type=\"password\" placeholder=\"Your password\">\n            <button type=\"submit\">Log in</button>\n          </div>\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n-->\n  ",
                         directives: [router_1.ROUTER_DIRECTIVES, common_1.FORM_DIRECTIVES],
                         providers: [
                             router_1.ROUTER_PROVIDERS,

@@ -42,13 +42,25 @@ export class SignUpComponent{
   }
 
   doSignUp(){
-    alert(this.email);
-    var fireBaseInfo = new Firebase("https://e3education.firebaseio.com/");
-    fireBaseInfo.push({
-      email : {
+    // alert(this.email);
+    // var fireBaseInfo = new Firebase("https://e3education.firebaseio.com/");
+    // fireBaseInfo.push({
+    //   email : {
+    //     email    : this.email,
+    //     password : this.password
+    //   }
+    // });
+    var ref = new Firebase("https://e3education.firebaseio.com/");
+      ref.createUser({
         email    : this.email,
         password : this.password
-      }
-    });
+      }, function(error, userData) {
+        if (error) {
+          console.log("Error creating user:", error);
+        } else {
+          console.log("Successfully created user account with uid:", userData.uid);
+          this.router.navigateByUrl(['/dashboard']);
+        }
+      });
   }
 }

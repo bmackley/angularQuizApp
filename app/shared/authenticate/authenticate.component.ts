@@ -15,14 +15,14 @@ import {Authenticate} from './authenticate';
         <span class="card-title">Login</span>
         <form [ngFormModel]="loginForm" (ngSubmit)="doLogin()">
           <input [(ngModel)]="email" type="email" placeholder="Your email">
-          <input ngControl="password" type="password" placeholder="Your password">
+          <input [(ngModel)]="password" type="password" placeholder="Your password">
           <button type="submit">Log in</button>
         </form>
         TODO: Remove this: {{email}}
     </div>
   </div>
 </div>
-
+<!--
 <div class="row">
   <div class="col s6 offset-s3 m6 offset-m3 l6 offset-l3">
     <div class="card blue-grey darken-1">
@@ -42,7 +42,7 @@ import {Authenticate} from './authenticate';
     </div>
   </div>
 </div>
-
+-->
   `,
   directives: [ROUTER_DIRECTIVES, FORM_DIRECTIVES],
   providers: [
@@ -67,25 +67,19 @@ export class LoginComponent{
     //return JSON.stringify(this.loginForm.value, null, 2)
   }
   doLogin(){
-    function authHandler(error, authData) {
+    console.log(this.email);
+    console.log(this.password);
+    debugger;
+    var fireBaseInfo = new Firebase("https://e3education.firebaseio.com/");
+    fireBaseInfo.authWithPassword({
+      email    : this.email,
+      password : this.password
+    }, function(error, authData) {
       if (error) {
         console.log("Login Failed!", error);
       } else {
         console.log("Authenticated successfully with payload:", authData);
       }
-    }
-    const fireBaseInfo = new Firebase("https://e3education.firebaseio.com/");
-    var loginRef = fireBaseInfo.child("user");
-    loginRef.authWithPassword({
-      email    : this.email,
-      password : this.password
-    }, authHandler);
-
-    alert(this.email);
-  }
-  onSubmit(value: string): void{
-
-    alert(value);
-    console.log('you submitted value:' , value)
+    });
   }
 }

@@ -32,12 +32,25 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router'], functio
                     });
                 }
                 SignUpComponent.prototype.doSignUp = function () {
-                    alert(this.email);
-                    var fireBaseInfo = new Firebase("https://e3education.firebaseio.com/");
-                    fireBaseInfo.push({
-                        email: {
-                            email: this.email,
-                            password: this.password
+                    // alert(this.email);
+                    // var fireBaseInfo = new Firebase("https://e3education.firebaseio.com/");
+                    // fireBaseInfo.push({
+                    //   email : {
+                    //     email    : this.email,
+                    //     password : this.password
+                    //   }
+                    // });
+                    var ref = new Firebase("https://e3education.firebaseio.com/");
+                    ref.createUser({
+                        email: this.email,
+                        password: this.password
+                    }, function (error, userData) {
+                        if (error) {
+                            console.log("Error creating user:", error);
+                        }
+                        else {
+                            console.log("Successfully created user account with uid:", userData.uid);
+                            this.router.navigateByUrl(['/dashboard']);
                         }
                     });
                 };
