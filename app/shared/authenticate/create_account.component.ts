@@ -11,13 +11,12 @@ import { Router, RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angula
     <div class="card blue-grey darken-1">
       <div class="card-content white-text">
         <span class="card-title">Create account</span>
-        <form [ngFormModel]="signupForm" (ngSubmit)="doSignUp()">
-          <input [(ngModel)]="email" type="email" placeholder="Your email">
-          <input [(ngModel)]="password" type="password" placeholder="Your password">
-          <input [(ngModel)]="password_verified" type="password" placeholder="Verify your password">
-          <button type="submit">Log in</button>
+        <form [ngFormModel]="signupForm" (ngSubmit)="doSignUp(emailInput.value, passwordInput.value, passwordVerifiedInput)">
+          <input #emailInput type="email" placeholder="Your email">
+          <input #passwordInput type="password" placeholder="Your password">
+          <input #passwordVerifiedInput type="password" placeholder="Verify your password">
+          <button type="submit">Submit</button>
         </form>
-        TODO: Remove this: {{email}}
     </div>
   </div>
 </div>
@@ -41,7 +40,7 @@ export class SignUpComponent{
     });
   }
 
-  doSignUp(){
+  doSignUp(email, password, verifiedPassword){
     // alert(this.email);
     // var fireBaseInfo = new Firebase("https://e3education.firebaseio.com/");
     // fireBaseInfo.push({
@@ -52,14 +51,14 @@ export class SignUpComponent{
     // });
     var ref = new Firebase("https://e3education.firebaseio.com/");
       ref.createUser({
-        email    : this.email,
-        password : this.password
+        email    : email,
+        password : password
       }, function(error, userData) {
         if (error) {
           console.log("Error creating user:", error);
         } else {
           console.log("Successfully created user account with uid:", userData.uid);
-          this.router.navigateByUrl(['/dashboard']);
+          alert('successfully created account')
         }
       });
   }

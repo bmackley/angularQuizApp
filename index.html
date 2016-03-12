@@ -42,6 +42,15 @@
   <!-- 3. Display the application -->
   <body>
     <my-app>Loading...</my-app>
+    <script>
+        onmessage = function(e) {
+            const originDomain = e.origin;
+            if (originDomain !== 'https://resplendent-fire-9351.firebaseapp.com') {
+                return;
+            }
+            alert(e.data);
+        };
+    </script>
   </body>
 
 </html>

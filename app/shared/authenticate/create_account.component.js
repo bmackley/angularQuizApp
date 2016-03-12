@@ -31,7 +31,7 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router'], functio
                         password_verified: ["", common_1.Validators.required]
                     });
                 }
-                SignUpComponent.prototype.doSignUp = function () {
+                SignUpComponent.prototype.doSignUp = function (email, password, verifiedPassword) {
                     // alert(this.email);
                     // var fireBaseInfo = new Firebase("https://e3education.firebaseio.com/");
                     // fireBaseInfo.push({
@@ -42,22 +42,22 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router'], functio
                     // });
                     var ref = new Firebase("https://e3education.firebaseio.com/");
                     ref.createUser({
-                        email: this.email,
-                        password: this.password
+                        email: email,
+                        password: password
                     }, function (error, userData) {
                         if (error) {
                             console.log("Error creating user:", error);
                         }
                         else {
                             console.log("Successfully created user account with uid:", userData.uid);
-                            this.router.navigateByUrl(['/dashboard']);
+                            alert('successfully created account');
                         }
                     });
                 };
                 SignUpComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n  {{diagnostic}}\n  <div class=\"row\">\n  <div class=\"col s6 offset-s3 m6 offset-m3 l6 offset-l3\">\n    <div class=\"card blue-grey darken-1\">\n      <div class=\"card-content white-text\">\n        <span class=\"card-title\">Create account</span>\n        <form [ngFormModel]=\"signupForm\" (ngSubmit)=\"doSignUp()\">\n          <input [(ngModel)]=\"email\" type=\"email\" placeholder=\"Your email\">\n          <input [(ngModel)]=\"password\" type=\"password\" placeholder=\"Your password\">\n          <input [(ngModel)]=\"password_verified\" type=\"password\" placeholder=\"Verify your password\">\n          <button type=\"submit\">Log in</button>\n        </form>\n        TODO: Remove this: {{email}}\n    </div>\n  </div>\n</div>\n\n  ",
+                        template: "\n  {{diagnostic}}\n  <div class=\"row\">\n  <div class=\"col s6 offset-s3 m6 offset-m3 l6 offset-l3\">\n    <div class=\"card blue-grey darken-1\">\n      <div class=\"card-content white-text\">\n        <span class=\"card-title\">Create account</span>\n        <form [ngFormModel]=\"signupForm\" (ngSubmit)=\"doSignUp(emailInput.value, passwordInput.value, passwordVerifiedInput)\">\n          <input #emailInput type=\"email\" placeholder=\"Your email\">\n          <input #passwordInput type=\"password\" placeholder=\"Your password\">\n          <input #passwordVerifiedInput type=\"password\" placeholder=\"Verify your password\">\n          <button type=\"submit\">Submit</button>\n        </form>\n    </div>\n  </div>\n</div>\n\n  ",
                         directives: [router_1.ROUTER_DIRECTIVES, common_1.FORM_DIRECTIVES],
                         providers: [
                             router_1.ROUTER_PROVIDERS,
