@@ -62,5 +62,5 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
   }
 ])
 export class AppComponent {
-  title = 'Find Learning Materials';
+  title = 'Learning Materials';
 }

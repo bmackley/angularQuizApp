@@ -1,4 +1,6 @@
-System.register(['angular2/core', 'angular2/common', 'angular2/router', './firebase.service', '../../redux/actions'], function(exports_1) {
+System.register(['angular2/core', 'angular2/common', 'angular2/router', './firebase.service', '../../redux/actions'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -64,7 +66,7 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', './fireb
                     __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, firebase_service_1.FireBaseService, Object])
                 ], LoginComponent);
                 return LoginComponent;
-            })();
+            }());
             exports_1("LoginComponent", LoginComponent);
         }
     }

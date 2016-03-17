@@ -1,4 +1,6 @@
-System.register(['./initial-state'], function(exports_1) {
+System.register(['./initial-state'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var initial_state_1;
     function rootReducer(state, action) {
         if (state === void 0) { state = initial_state_1.InitialState; }
