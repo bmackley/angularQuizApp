@@ -66,7 +66,7 @@ System.register(['angular2/core', './subject/subject.service', './subject/subjec
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n    <!--look up flexbox-->\n    <h1>{{title}}</h1>\n    <nav>\n      <a [routerLink]=\"['Dashboard']\">Dashboard</a>\n      <a [routerLink]=\"['Subjects']\">Subjects</a>\n      <a [routerLink]=\"['Login']\">Login</a>\n      <a [routerLink]=\"['SignUp']\">Sign Up</a>\n      <a > {{username}} </a>\n    </nav>\n    <router-outlet></router-outlet>\n  ",
+                        template: "\n    <!--look up flexbox-->\n    <h1>{{title}}</h1>\n    <nav>\n    <div class=\"nav-wrapper\">\n      <a [routerLink]=\"['Dashboard']\" class=\"brand-logo\">E3 Education</a>\n      <a href=\"#\" data-activates=\"mobile-demo\" class=\"button-collapse\"><i class=\"material-icons\">menu</i></a>\n      <ul class=\"right hide-on-med-and-down\">\n      <li><a [routerLink]=\"['Dashboard']\">Dashboard</a></li>\n      <li><a [routerLink]=\"['Subjects']\">Subjects</a></li>\n      <li><a [routerLink]=\"['Login']\">Login</a></li>\n      <li><a [routerLink]=\"['SignUp']\">Sign Up</a></li>\n      </ul>\n      <ul class=\"side-nav\" id=\"mobile-demo\">\n      <li><a [routerLink]=\"['Dashboard']\">Dashboard</a></li>\n      <li><a [routerLink]=\"['Subjects']\">Subjects</a></li>\n      <li><a [routerLink]=\"['Login']\">Login</a></li>\n      <li><a [routerLink]=\"['SignUp']\">Sign Up</a></li>\n      </ul>\n    </div>\n  </nav>\n    <router-outlet></router-outlet>\n  ",
                         directives: [router_1.ROUTER_DIRECTIVES],
                         providers: [
                             router_1.ROUTER_PROVIDERS,

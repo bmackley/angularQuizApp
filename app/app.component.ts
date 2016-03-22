@@ -15,12 +15,23 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
     <!--look up flexbox-->
     <h1>{{title}}</h1>
     <nav>
-      <a [routerLink]="['Dashboard']">Dashboard</a>
-      <a [routerLink]="['Subjects']">Subjects</a>
-      <a [routerLink]="['Login']">Login</a>
-      <a [routerLink]="['SignUp']">Sign Up</a>
-      <a > {{username}} </a>
-    </nav>
+    <div class="nav-wrapper">
+      <a [routerLink]="['Dashboard']" class="brand-logo">E3 Education</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+      <li><a [routerLink]="['Dashboard']">Dashboard</a></li>
+      <li><a [routerLink]="['Subjects']">Subjects</a></li>
+      <li><a [routerLink]="['Login']">Login</a></li>
+      <li><a [routerLink]="['SignUp']">Sign Up</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+      <li><a [routerLink]="['Dashboard']">Dashboard</a></li>
+      <li><a [routerLink]="['Subjects']">Subjects</a></li>
+      <li><a [routerLink]="['Login']">Login</a></li>
+      <li><a [routerLink]="['SignUp']">Sign Up</a></li>
+      </ul>
+    </div>
+  </nav>
     <router-outlet></router-outlet>
   `,
   directives: [ROUTER_DIRECTIVES],
