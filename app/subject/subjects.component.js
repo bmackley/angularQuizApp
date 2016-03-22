@@ -47,7 +47,6 @@ System.register(['angular2/core', './subject-detail.component', './subject.servi
                     core_1.Component({
                         selector: 'my-subjects',
                         templateUrl: 'app/subject/subjects.component.html',
-                        styles: ["\n    .selected {\n      background-color: #CFD8DC !important;\n      color: white;\n    }\n    .subjects {\n      margin: 0 0 2em 0;\n      list-style-type: none;\n      padding: 0;\n      width: 10em;\n    }\n    .subjects li {\n      cursor: pointer;\n      position: relative;\n      left: 0;\n      background-color: #EEE;\n      margin: .5em;\n      padding: .3em 0em;\n      height: 1.6em;\n      border-radius: 4px;\n    }\n    .subjects li.selected:hover {\n      color: white;\n    }\n    .subjects li:hover {\n      color: #607D8B;\n      background-color: #EEE;\n      left: .1em;\n    }\n    .subjects .text {\n      position: relative;\n      top: -3px;\n    }\n    .subjects .badge {\n      display: inline-block;\n      font-size: small;\n      color: white;\n      padding: 0.8em 0.7em 0em 0.7em;\n      background-color: #607D8B;\n      line-height: 1em;\n      position: relative;\n      left: -1px;\n      top: -4px;\n      height: 1.8em;\n      margin-right: .8em;\n      border-radius: 4px 0px 0px 4px;\n    }\n  "],
                         directives: [subject_detail_component_1.SubjectDetailComponent]
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, subject_service_1.SubjectService])

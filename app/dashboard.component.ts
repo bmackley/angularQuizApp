@@ -1,18 +1,11 @@
 import { Component, OnInit } from 'angular2/core';
 import {Router } from 'angular2/router';
-
+import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
 import {Subject } from './subject/subject'
 import { SubjectService } from './subject/subject.service';
 @Component({
   selector: 'my-dashboard',
-  template: `<h3>Top Heroes</h3>
-  <div class="grid grid-pad">
-      <div *ngFor="#subject of subjects" (click)="gotoDetail(subject)" class="col-1-4" >
-          <div class="module hero">
-              <h4>{{subject.name}}</h4>
-          </div>
-      </div>
-  </div>`,
+  templateUrl: 'app/dashboard.component.html',
 })
 
 export class DashboardComponent implements OnInit {

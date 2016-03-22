@@ -42,7 +42,7 @@ System.register(['angular2/core', 'angular2/router', './subject/subject.service'
                 DashboardComponent = __decorate([
                     core_1.Component({
                         selector: 'my-dashboard',
-                        template: "<h3>Top Heroes</h3>\n  <div class=\"grid grid-pad\">\n      <div *ngFor=\"#subject of subjects\" (click)=\"gotoDetail(subject)\" class=\"col-1-4\" >\n          <div class=\"module hero\">\n              <h4>{{subject.name}}</h4>\n          </div>\n      </div>\n  </div>",
+                        templateUrl: 'app/dashboard.component.html',
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, subject_service_1.SubjectService])
                 ], DashboardComponent);

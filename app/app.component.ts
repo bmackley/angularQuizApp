@@ -14,7 +14,7 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
   template: `
     <!--look up flexbox-->
     <h1>{{title}}</h1>
-    <nav>
+    <nav class="light-blue darken-4">
     <div class="nav-wrapper">
       <a [routerLink]="['Dashboard']" class="brand-logo">E3 Education</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
