@@ -10,6 +10,9 @@ System.register(['angular2/core', './subject/subject.service', './subject/subjec
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
+    var __param = (this && this.__param) || function (paramIndex, decorator) {
+        return function (target, key) { decorator(target, key, paramIndex); }
+    };
     var core_1, subject_service_1, subjects_component_1, concepts_component_1, concept_service_1, dashboard_component_1, subject_detail_component_1, authenticate_component_1, create_account_component_1, router_1;
     var AppComponent;
     return {
@@ -46,13 +49,24 @@ System.register(['angular2/core', './subject/subject.service', './subject/subjec
             }],
         execute: function() {
             AppComponent = (function () {
-                function AppComponent() {
+                function AppComponent(store) {
                     this.title = 'Learning Materials';
+                    this.unsubscribe = store.subscribe(this.mapStateToThis(store));
                 }
+                AppComponent.prototype.mapStateToThis = function (store) {
+                    var _this = this;
+                    return function () {
+                        var state = store.getState();
+                        _this.username = state.currentUser.email;
+                    };
+                };
+                AppComponent.prototype.ngOnDestroy = function () {
+                    this.unsubscribe;
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n    <h1>{{title}}</h1>\n    <nav>\n      <a [routerLink]=\"['Dashboard']\">Dashboard</a>\n      <a [routerLink]=\"['Subjects']\">Subjects</a>\n      <a [routerLink]=\"['Login']\">Login</a>\n      <a [routerLink]=\"['SignUp']\">Sign Up</a>\n    </nav>\n    <router-outlet></router-outlet>\n  ",
+                        template: "\n    <!--look up flexbox-->\n    <h1>{{title}}</h1>\n    <nav>\n      <a [routerLink]=\"['Dashboard']\">Dashboard</a>\n      <a [routerLink]=\"['Subjects']\">Subjects</a>\n      <a [routerLink]=\"['Login']\">Login</a>\n      <a [routerLink]=\"['SignUp']\">Sign Up</a>\n      <a > {{username}} </a>\n    </nav>\n    <router-outlet></router-outlet>\n  ",
                         directives: [router_1.ROUTER_DIRECTIVES],
                         providers: [
                             router_1.ROUTER_PROVIDERS,
@@ -92,8 +106,9 @@ System.register(['angular2/core', './subject/subject.service', './subject/subjec
                             name: 'SignUp',
                             component: create_account_component_1.SignUpComponent
                         }
-                    ]), 
-                    __metadata('design:paramtypes', [])
+                    ]),
+                    __param(0, core_1.Inject('REDUX_STORE')), 
+                    __metadata('design:paramtypes', [Object])
                 ], AppComponent);
                 return AppComponent;
             }());

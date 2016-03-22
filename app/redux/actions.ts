@@ -13,7 +13,10 @@ export const Actions = {
           //inject this info as a service
           console.log("Authenticated successfully with payload:", authData);
           console.log(authData.password.email)
-
+          store.dispatch({
+            type: Actions.authenticateUser.type,
+            email
+          })
         }
       });
     }

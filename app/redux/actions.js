@@ -21,6 +21,10 @@ System.register([], function(exports_1, context_1) {
                                 //inject this info as a service
                                 console.log("Authenticated successfully with payload:", authData);
                                 console.log(authData.password.email);
+                                store.dispatch({
+                                    type: Actions.authenticateUser.type,
+                                    email: email
+                                });
                             }
                         });
                     }
