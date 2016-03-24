@@ -66,12 +66,10 @@ export class LoginComponent{
   }
 
   getValue() {
-    console.log(JSON.stringify(this.loginForm.value, null, 2))
+    // console.log(JSON.stringify(this.loginForm.value, null, 2))
     //return JSON.stringify(this.loginForm.value, null, 2)
   }
   doLogin(email, password){
-    console.log(email)
-    console.log('password' + password)
     Actions.authenticateUser.execute(this.store, email, password)
   }
 }

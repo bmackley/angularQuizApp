@@ -44,12 +44,10 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', './fireb
                     this.store = store;
                 }
                 LoginComponent.prototype.getValue = function () {
-                    console.log(JSON.stringify(this.loginForm.value, null, 2));
+                    // console.log(JSON.stringify(this.loginForm.value, null, 2))
                     //return JSON.stringify(this.loginForm.value, null, 2)
                 };
                 LoginComponent.prototype.doLogin = function (email, password) {
-                    console.log(email);
-                    console.log('password' + password);
                     actions_1.Actions.authenticateUser.execute(this.store, email, password);
                 };
                 LoginComponent = __decorate([

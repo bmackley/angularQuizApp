@@ -39,6 +39,12 @@ System.register(['angular2/core', 'angular2/router', './subject/subject.service'
                     var link = ['SubjectDetail', { id: subject.id }];
                     this._router.navigate(link);
                 };
+                DashboardComponent.prototype.gotoLogin = function () {
+                    this._router.navigate(['Login']);
+                };
+                DashboardComponent.prototype.gotoSignUp = function () {
+                    this._router.navigate(['SignUp']);
+                };
                 DashboardComponent = __decorate([
                     core_1.Component({
                         selector: 'my-dashboard',

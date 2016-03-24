@@ -5,12 +5,11 @@ import {SubjectService} from './subject.service';
 import {Concept} from '../concept/concept';
 import {ConceptDetailComponent} from '../concept/concept-detail.component';
 import {ConceptService} from '../concept/concept.service'
-
 import {Router } from 'angular2/router';
+
 @Component({
   selector: 'my-subjects',
   templateUrl: 'app/subject/subjects.component.html',
-
   directives: [SubjectDetailComponent]
 })
 export class SubjectsComponent implements OnInit {

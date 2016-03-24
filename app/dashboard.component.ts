@@ -1,8 +1,8 @@
 import { Component, OnInit } from 'angular2/core';
-import {Router } from 'angular2/router';
-import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
+import { Router, RouteParams } from 'angular2/router';
 import {Subject } from './subject/subject'
 import { SubjectService } from './subject/subject.service';
+
 @Component({
   selector: 'my-dashboard',
   templateUrl: 'app/dashboard.component.html',
@@ -10,6 +10,7 @@ import { SubjectService } from './subject/subject.service';
 
 export class DashboardComponent implements OnInit {
   subjects: Subject[] = [];
+  private _routeParams: RouteParams;
   constructor(private _router: Router, private _subjectService: SubjectService) { }
   ngOnInit() {
     this._subjectService.getSubjects()
@@ -18,5 +19,11 @@ export class DashboardComponent implements OnInit {
   gotoDetail(subject: Subject) {
     let link = ['SubjectDetail', { id: subject.id }];
     this._router.navigate(link);
+  }
+  gotoLogin(){
+    this._router.navigate(['Login']);
+  }
+  gotoSignUp(){
+    this._router.navigate(['SignUp']);
   }
 }
